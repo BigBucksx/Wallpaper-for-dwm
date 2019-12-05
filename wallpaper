@@ -1,0 +1,10 @@
+#!/bin/sh
+
+ROOT=/home/$USER/Pictures
+CONFIG=/home/$USER/.config
+#List subdirectories and get subdirectory
+SUBDIR=$(ls -l $ROOT | awk {'print $1" "$9'} | grep d | awk {'print $2'} | dmenu)
+
+WALLPAPER=$(sxiv -to $ROOT/$SUBDIR)
+
+ln -sf $WALLPAPER $CONFIG/wallpaper 
